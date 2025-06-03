@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True & Soul</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="header">
+        <div class="header-content">
+            <h1 class="name">Bring Your Ideas to Life with a High-Impact</h1>
+            <p class="animated-title">
+                <span class="title-line">Full Stack Developer</span>
+                <span class="title-line">AI / ML Developer</span>
+            </p>
+            <p class="header-description">
+                Passionate about creating innovative solutions and pushing the boundaries of technology
+            </p>
+        </div>
+    </div>
+
+    <div class="summary">
+        <div class="summary-container">
+            <div class="profile-photo">
+                <img src="profile.png" alt="Profile Photo">
+            </div>
+            <div class="summary-content">
+                <h2>About Me</h2>
+                <p>Full Stack & AI Developer with 8+ years of experience in web development and machine learning. Specialized in building scalable applications and AI solutions using modern technologies.</p>
+                <p>Expert in React, Node.js, Python, and AI frameworks. Passionate about creating efficient, user-friendly applications and implementing cutting-edge AI features.</p>
+                <p>Strong focus on clean code, performance optimization, and delivering high-quality solutions that drive business growth.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="experiences">
+        <canvas id="waveCanvas"></canvas>
+        <div class="section-container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header" onclick="toggleExperience(this)">
+                            <h3>Senior Full Stack & AI Developer</h3>
+                            <span class="company">Independent / Freelance</span>
+                            <div class="timeline-meta">
+                                <span class="date">Jan 2021 - Aug 2023</span>
+                                <span class="location">📍 Toronto, Canada</span>
+                            </div>
+                            <div class="toggle-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <ul>
+                                <li>Developed 15+ full-stack apps using React, Node.js, Django, PostgreSQL</li>
+                                <li>Built AI solutions with OpenAI, LangChain, and Hugging Face</li>
+                                <li>Implemented DevOps with Docker, Kubernetes, and GitHub Actions</li>
+                                <li>Created recommendation engines and chatbots for clients</li>
+                                <li>Managed projects using Git, Jira, and Agile methodologies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header" onclick="toggleExperience(this)">
+                            <h3>Full Stack Developer</h3>
+                            <span class="company">TechNova Solutions Inc</span>
+                            <div class="timeline-meta">
+                                <span class="date">Aug 2018 - Dec 2020</span>
+                                <span class="location">📍 Toronto, ON</span>
+                            </div>
+                            <div class="toggle-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-body">
+                            <ul>
+                                <li>Built SaaS platforms with Vue.js, Express.js, MongoDB</li>
+                                <li>Migrated legacy systems to microservices architecture</li>
+                                <li>Developed RESTful and GraphQL APIs for web/mobile</li>
+                                <li>Integrated AI insights into business dashboards</li>
+                                <li>Improved system performance and reliability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="educations">
+        <div class="section-container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <div class="education-header">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <span class="university">University of Toronto</span>
+                    <div class="education-meta">
+                        <span class="date">2017 - 2020</span>
+                    </div>
+                </div>
+                <div class="education-body">
+                    <div class="coursework">
+                        <h4>Key Focus Areas</h4>
+                        <div class="course-tags">
+                            <span>Algorithms</span>
+                            <span>Software Engineering</span>
+                            <span>Data Mining</span>
+                            <span>Artificial Intelligence</span>
+                            <span>Database Systems</span>
+                            <span>NLP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills</h2>
+            
+            <div class="skills-container">
+                <div class="tech">
+                    <h3>Technology Skills</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">React</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Node.js</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 92%"></div>
+                        </div>
+                        <span class="skill-percentage">92%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">AI/ML</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 88%"></div>
+                        </div>
+                        <span class="skill-percentage">88%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Docker</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                </div>
+
+                <div class="coding">
+                    <h3>Coding Skills</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Frontend Development</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Backend Development</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 92%"></div>
+                        </div>
+                        <span class="skill-percentage">92%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Database Design</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%"></div>
+                        </div>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">API Development</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 93%"></div>
+                        </div>
+                        <span class="skill-percentage">93%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">DevOps</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 87%"></div>
+                        </div>
+                        <span class="skill-percentage">87%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-me">
+        <div class="section-container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-container">
+                <div class="contact-avatar">
+                    <img src="avatar.png" alt="Contact Avatar">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>olaf3915@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <span>@olaf_smart_15</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-discord"></i>
+                        <span>olaf_furrio#1234</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2024 Olaf Furrio. All rights reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Smiler54" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://t.me/olaf_smart_15" target="_blank" class="social-link">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="https://discord.com/users/your-discord-id" target="_blank" class="social-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
