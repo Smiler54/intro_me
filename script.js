@@ -113,9 +113,9 @@ window.addEventListener('resize', () => {
 
 animate();
 
-// Three.js Wave Animation for Skills
+// Three.js Cubes Animation for Skills
 const skillsCanvas = document.createElement('canvas');
-skillsCanvas.id = 'skillsWaveCanvas';
+skillsCanvas.id = 'skillsCanvas';
 document.querySelector('.skills').prepend(skillsCanvas);
 
 const skillsSection = document.querySelector('.skills');
@@ -133,44 +133,114 @@ const skillsCamera = new THREE.PerspectiveCamera(75, skillsCanvas.width / skills
 const skillsRenderer = new THREE.WebGLRenderer({ canvas: skillsCanvas, alpha: true });
 skillsRenderer.setSize(skillsCanvas.width, skillsCanvas.height);
 
-// Create wave geometry for skills
-const skillsGeometry = new THREE.PlaneGeometry(40, 20, 64, 32);
-const skillsMaterial = new THREE.MeshBasicMaterial({
-    color: 0x4a90e2,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.12
-});
-const skillsWave = new THREE.Mesh(skillsGeometry, skillsMaterial);
-skillsWave.rotation.x = -Math.PI / 2;
-skillsScene.add(skillsWave);
+// Add lights to the scene
+const ambientLight = new THREE.AmbientLight(0x404040, 0.5); // Soft white light
+skillsScene.add(ambientLight);
 
-skillsCamera.position.z = 8;
-skillsCamera.position.y = 4;
+const directionalLight = new THREE.DirectionalLight(0xe3e3e3, 1); // Blue-tinted light
+directionalLight.position.set(10, 10, 10);
+skillsScene.add(directionalLight);
+
+const pointLight = new THREE.PointLight(0xe0e0e0, 1, 100);
+pointLight.position.set(-10, -10, -10);
+skillsScene.add(pointLight);
+
+// Create cubes
+const cubes = [];
+const numCubes = 20;
+const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+const cubeMaterial = new THREE.MeshPhongMaterial({
+    color: 0x4a90e2,
+    transparent: true,
+    opacity: 1.0,
+    shininess: 10,
+    specular: 0x4a90e2
+});
+
+for (let i = 0; i < numCubes; i++) {
+    const size = Math.random() * 2 + 0.5;
+    const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    
+    // Random position
+    cube.position.x = (Math.random() - 0.5) * 50;
+    cube.position.y = (Math.random() - 0.5) * 30 + 15;
+    cube.position.z = (Math.random() - 0.5) * 50;
+    
+    // Random rotation
+    cube.rotation.x = Math.random() * Math.PI;
+    cube.rotation.y = Math.random() * Math.PI;
+    
+    // Random scale
+    cube.scale.set(size, size, size);
+    
+    // Store speed and direction
+    cube.userData = {
+        speed: Math.random() * 0.03 + 0.02,
+        direction: new THREE.Vector3(
+            (Math.random() - 0.5) * 0.02,
+            (Math.random() - 0.5) * 0.02,
+            (Math.random() - 0.5) * 0.02
+        ),
+        rotationSpeed: new THREE.Vector3(
+            Math.random() * 0.02,
+            Math.random() * 0.02,
+            Math.random() * 0.02
+        )
+    };
+    
+    cubes.push(cube);
+    skillsScene.add(cube);
+}
+
+skillsCamera.position.z = 25;
+skillsCamera.position.y = 10;
 skillsCamera.lookAt(0, 0, 0);
 
 // Animation for Skills
 function animateSkills() {
     requestAnimationFrame(animateSkills);
 
-    // Update wave vertices
-    const time = Date.now() * 0.0004;
-    const positions = skillsGeometry.attributes.position.array;
+    // Update light positions
+    const time = Date.now() * 0.001;
+    directionalLight.position.x = Math.sin(time) * 15;
+    directionalLight.position.y = Math.cos(time) * 15;
+    pointLight.position.x = Math.cos(time * 0.5) * 15;
+    pointLight.position.z = Math.sin(time * 0.5) * 15;
+
+    // Camera rotation
+    const radius = 35;
+    const cameraSpeed = 0.1;
+    const cameraTime = time * cameraSpeed;
     
-    for (let i = 0; i < positions.length; i += 3) {
-        const x = positions[i];
-        const y = positions[i + 1];
-        // Calculate distance from right middle point
-        const dx = x - 20; // Right middle point x-coordinate
-        const dy = y - 20;      // Center y-coordinate
-        const distance = Math.sqrt(dx * dx + dy * dy) * 2.0;
+    // Orbit camera around the scene
+    skillsCamera.position.x = Math.sin(cameraTime) * radius;
+    skillsCamera.position.z = Math.cos(cameraTime) * radius;
+    skillsCamera.position.y = 15 + Math.sin(cameraTime * 0.5) * 5; // Slight vertical movement
+    
+    // Make camera look at the center
+    skillsCamera.lookAt(0, 0, 0);
+
+    // Update cube positions and rotations
+    cubes.forEach(cube => {
+        // Move cube
+        cube.position.add(cube.userData.direction);
         
-        // Create ripple effect from right middle
-        positions[i + 2] = Math.sin(distance * 0.5 - time * 2) * 0.4;
-    }
-    
-    skillsGeometry.attributes.position.needsUpdate = true;
-    skillsWave.rotation.z = Math.sin(time * 0.15) * 0.05;
+        // Rotate cube
+        cube.rotation.x += cube.userData.rotationSpeed.x;
+        cube.rotation.y += cube.userData.rotationSpeed.y;
+        cube.rotation.z += cube.userData.rotationSpeed.z;
+        
+        // Bounce off boundaries
+        if (Math.abs(cube.position.x) > 15) {
+            cube.userData.direction.x *= -1;
+        }
+        if (Math.abs(cube.position.y) > 10) {
+            cube.userData.direction.y *= -1;
+        }
+        if (Math.abs(cube.position.z) > 10) {
+            cube.userData.direction.z *= -1;
+        }
+    });
 
     skillsRenderer.render(skillsScene, skillsCamera);
 }
