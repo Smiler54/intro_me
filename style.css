@@ -1,19 +1,4 @@
 :root {
-    /* Light theme variables */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f5f5;
-    --bg-tertiary: #e0e0e0;
-    --text-primary: #333333;
-    --text-secondary: #444444;
-    --accent-color: #4a90e2;
-    --header-overlay: rgba(255, 255, 255, 0.5);
-    --back-overlay: rgba(255, 255, 255, 0.1);
-    --card-bg: rgba(220, 220, 220, 0.3);
-    --card-shadow: rgba(0, 0, 0, 0.1);
-    --line-gradient: linear-gradient(90deg, #4a90e2, #d2d2d2);
-}
-
-[data-theme="dark"] {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d2d;
     --bg-tertiary: #0f0f0f;
@@ -25,6 +10,23 @@
     --card-bg: rgba(46, 46, 46, 0.2);
     --card-shadow: rgba(0, 0, 0, 0.3);
     --line-gradient: linear-gradient(90deg, #4a90e2, #2d2d2d);
+    --text-shadow: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] {
+    /* Light theme variables */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-tertiary: #e0e0e0;
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --accent-color: #4a90e2;
+    --header-overlay: rgba(255, 255, 255, 0.5);
+    --back-overlay: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(220, 220, 220, 0.3);
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --line-gradient: linear-gradient(90deg, #4a90e2, #d2d2d2);
+    --text-shadow: rgba(200, 200, 200, 0.5);
 }
 
 *, html, body {
@@ -65,18 +67,25 @@
 
 #themeToggle i {
     font-size: 1.2rem;
+    transition: opacity 0.3s ease;
+}
+
+/* Show moon in light theme */
+#themeToggle .fa-moon {
+    display: block;
 }
 
 #themeToggle .fa-sun {
     display: none;
 }
 
-[data-theme="dark"] #themeToggle .fa-sun {
-    display: block;
-}
-
+/* Show sun in dark theme */
 [data-theme="dark"] #themeToggle .fa-moon {
     display: none;
+}
+
+[data-theme="dark"] #themeToggle .fa-sun {
+    display: block;
 }
 
 /* -------------------------- HEADER ----------------------------- */
@@ -116,7 +125,7 @@
     padding: 8rem 2rem;
     max-width: 1000px;
     width: 100%;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     background: var(--card-bg);
     border-radius: 20px;
     box-shadow: 0 8px 32px var(--card-shadow);
@@ -127,7 +136,7 @@
     font-weight: 700;
     margin-bottom: 2rem;
     color: var(--text-primary);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 10px var(--text-shadow);
     letter-spacing: 2px;
 }
 

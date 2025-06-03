@@ -2,15 +2,23 @@
 const themeToggle = document.getElementById('themeToggle');
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Check for saved theme preference or default to dark
-const currentTheme = localStorage.getItem('theme') || 'dark';
+// Set initial theme to dark if no theme is saved
+if (!localStorage.getItem('theme')) {
+    localStorage.setItem('theme', 'dark');
+}
+
+// Get the current theme
+const currentTheme = localStorage.getItem('theme');
 
 // Apply the theme
 document.documentElement.setAttribute('data-theme', currentTheme);
 
 // Theme toggle click handler
 themeToggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    // Update theme
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 });
