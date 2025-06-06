@@ -313,46 +313,12 @@
     }
 }
 
-/* Animation Classes */
-.fade-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-up.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.fade-left {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-left.animate {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.fade-right {
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-right.animate {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 /* Apply animations to sections */
 .summary-content h2,
 .summary-content p,
 .profile-photo {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -360,7 +326,7 @@
 .summary-content p.animate,
 .profile-photo.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* Add animation delays for staggered effects */
@@ -730,13 +696,13 @@
     align-items: center;
     gap: 1rem;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .skill-item.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .skill-name {
@@ -796,13 +762,13 @@
 /* Block Animations */
 .tech, .coding {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .tech.animate, .coding.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .tech {
@@ -815,35 +781,35 @@
 
 .section-title {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .section-title.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .timeline-content {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .timeline-content.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .course-tags span {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .course-tags span.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* Staggered animation for course tags */
@@ -952,24 +918,24 @@
 /* Apply animations to sections */
 .contact-container {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-30px) scale(1.05);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .contact-container.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 .contact-item {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px) scale(1.05);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .contact-item.animate {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
 }
 
 /* Add animation delays for staggered effects */
