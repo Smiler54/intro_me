@@ -313,6 +313,60 @@
     }
 }
 
+/* Animation Classes */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Apply animations to sections */
+.summary-content h2,
+.summary-content p,
+.profile-photo {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.summary-content h2.animate,
+.summary-content p.animate,
+.profile-photo.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add animation delays for staggered effects */
+.summary-content p:nth-child(2) { transition-delay: 0.2s; }
+.summary-content p:nth-child(3) { transition-delay: 0.4s; }
+
 /* -------------------------- EXPERIENCES ----------------------------- */
 .experiences {
     padding: 8rem 2rem 4rem;
@@ -345,17 +399,17 @@
     margin-bottom: 3rem;
     text-align: center;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    width: 100%;
 }
 
 .section-title::after {
     content: '';
     position: absolute;
     bottom: -10px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
     height: 3px;
     background: var(--line-gradient);
 }
@@ -397,7 +451,7 @@
 }
 
 .timeline-content {
-    width: 60%;
+    width: 45%;
     padding: 2rem;
     background: var(--card-bg);
     backdrop-filter: blur(5px);
@@ -494,6 +548,11 @@
 
     .timeline-content {
         width: calc(100% - 60px);
+        margin-left: 60px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
         margin-left: 60px;
     }
 
@@ -670,6 +729,14 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-item.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .skill-name {
@@ -725,6 +792,67 @@
         align-self: flex-end;
     }
 }
+
+/* Block Animations */
+.tech, .coding {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.tech.animate, .coding.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech {
+    transition-delay: 0.2s;
+}
+
+.coding {
+    transition-delay: 0.4s;
+}
+
+.section-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-title.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.course-tags span {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.course-tags span.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation for course tags */
+.course-tags span:nth-child(1) { transition-delay: 0.1s; }
+.course-tags span:nth-child(2) { transition-delay: 0.2s; }
+.course-tags span:nth-child(3) { transition-delay: 0.3s; }
+.course-tags span:nth-child(4) { transition-delay: 0.4s; }
+.course-tags span:nth-child(5) { transition-delay: 0.5s; }
+.course-tags span:nth-child(6) { transition-delay: 0.6s; }
 
 /* -------------------------- CONTACT ME ----------------------------- */
 .contact-me {
@@ -820,6 +948,33 @@
         transform: translateY(-5px);
     }
 }
+
+/* Apply animations to sections */
+.contact-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contact-container.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contact-item.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Add animation delays for staggered effects */
+.contact-item:nth-child(2) { transition-delay: 0.2s; }
+.contact-item:nth-child(3) { transition-delay: 0.4s; }
 
 /* -------------------------- FOOTER ----------------------------- */
 .footer {

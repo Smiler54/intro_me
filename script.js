@@ -253,4 +253,73 @@ window.addEventListener('resize', () => {
     skillsRenderer.setSize(skillsCanvas.width, skillsCanvas.height);
 });
 
-animateSkills(); 
+animateSkills();
+
+// Scroll Animation for Skills
+const skillItems = document.querySelectorAll('.skill-item');
+
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            // Unobserve after animation is triggered
+            skillsObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2, // Trigger when 20% of the item is visible
+    rootMargin: '0px 0px -50px 0px' // Start animation slightly before the item comes into view
+});
+
+// Observe each skill item
+skillItems.forEach(item => {
+    skillsObserver.observe(item);
+});
+
+// Scroll Animation for All Sections
+const animatedElements = [
+    // Section titles
+    ...document.querySelectorAll('.section-title'),
+    
+    // Summary section
+    ...document.querySelectorAll('.summary-content h2'),
+    ...document.querySelectorAll('.summary-content p'),
+    document.querySelector('.profile-photo'),
+    
+    // Experiences section
+    ...document.querySelectorAll('.timeline-item'),
+    ...document.querySelectorAll('.timeline-content'),
+    ...document.querySelectorAll('.timeline-dot'),
+    
+    // Education section
+    document.querySelector('.education-card'),
+    ...document.querySelectorAll('.course-tags span'),
+    
+    // Skills section
+    document.querySelector('.tech'),
+    document.querySelector('.coding'),
+    
+    // Contact section
+    document.querySelector('.contact-container'),
+    ...document.querySelectorAll('.contact-item')
+];
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            // Unobserve after animation is triggered
+            sectionObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Observe all animated elements
+animatedElements.forEach(element => {
+    if (element) { // Check if element exists
+        sectionObserver.observe(element);
+    }
+}); 
