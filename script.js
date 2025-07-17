@@ -323,3 +323,26 @@ animatedElements.forEach(element => {
         sectionObserver.observe(element);
     }
 }); 
+
+// Animated subtitle logic
+document.addEventListener("DOMContentLoaded", function() {
+    const titles = document.querySelectorAll('.animated-title .title-line');
+    let current = 0;
+
+    // Hide all except the first
+    titles.forEach((el, idx) => {
+        el.style.opacity = idx === 0 ? '1' : '0';
+        el.style.transition = 'opacity 0.7s';
+        el.style.position = 'absolute';
+        el.style.left = 0;
+        el.style.right = 0;
+    });
+    document.querySelector('.animated-title').style.position = 'relative';
+    document.querySelector('.animated-title').style.height = titles[0].offsetHeight + 'px';
+
+    setInterval(() => {
+        titles[current].style.opacity = '0';
+        current = (current + 1) % titles.length;
+        titles[current].style.opacity = '1';
+    }, 2000);
+}); 
